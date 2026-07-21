@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部控制 -->
+    <div class="top-controls">
+        <button class="btn" id="restartBtn">重新开始</button>
+        <button class="btn" id="pauseBtn">暂停</button>
+    </div>
+
+    <!-- 主游戏区域 -->
+    <div class="main-container">
+        <!-- 游戏画布 -->
+        <div class="game-board">
+            <canvas id="tetris" width="300" height="600"></canvas>
+        </div>
+
+        <!-- 右侧信息面板 -->
+        <aside class="info-panel">
+            <div class="info-section">
+                <h3>得分</h3>
+                <div class="info-value" id="score">0</div>
+            </div>
+
+            <div class="info-section">
+                <h3>消除行数</h3>
+                <div class="info-value" id="lines">0</div>
+            </div>
+
+            <div class="info-section">
+                <h3>当前等级</h3>
+                <div class="info-value" id="level">1</div>
+            </div>
+
+            <div class="info-section">
+                <h3>下一个方块</h3>
+                <div class="next-preview">
+                    <canvas id="nextCanvas" width="80" height="80"></canvas>
+                </div>
+            </div>
+
+            <!-- 桌面端方向键（整合进信息面板） -->
+            <div class="info-section">
+                <h3>操作</h3>
+                <div class="desktop-controls">
+                    <button class="ctrl-btn" data-action="rotate" title="旋转">⟲</button>
+                    <button class="ctrl-btn" data-action="left" title="左移">←</button>
+                    <button class="ctrl-btn" data-action="down" title="下移">↓</button>
+                    <button class="ctrl-btn" data-action="right" title="右移">→</button>
+                    <button class="ctrl-btn" data-action="drop" title="硬降">空格</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 移动端虚拟控制 -->
+    <div class="mobile-controls row">
+        <button class="mobile-btn" id="leftBtn">←</button>
+        <button class="mobile-btn" id="rotateBtn">⟲</button>
+        <button class="mobile-btn" id="rightBtn">→</button>
+    </div>
+    <div class="mobile-controls col">
+        <button class="mobile-btn" id="downBtn">↓</button>
+        <button class="mobile-btn" id="dropBtn">⤓</button>
+    </div>
+
+    <!-- 游戏结束弹窗 -->
+    <div class="game-over" id="gameOver">
+        <h2>游戏结束</h2>
+        <p>本次得分：<span id="finalScore">0</span></p>
+        <button class="btn" onclick="restartGame()">重新开始</button>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        慢慢玩，不用着急 (。•ᴗ-)♡
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
