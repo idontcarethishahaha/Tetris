@@ -319,28 +319,12 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== 按钮事件绑定（统一处理） =====
-const actionMap = {
-    leftBtn: moveLeft,    desktopLeftBtn: moveLeft,
-    rightBtn: moveRight,  desktopRightBtn: moveRight,
-    downBtn: moveDown,    desktopDownBtn: moveDown,
-    rotateBtn: rotate,    desktopRotateBtn: rotate,
-    dropBtn: hardDrop,    desktopDropBtn: hardDrop,
-};
-
-Object.entries(actionMap).forEach(([id, action]) => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', action);
-});
-
 // 重新开始 / 暂停
 document.getElementById('restartBtn')?.addEventListener('click', restartGame);
 document.getElementById('pauseBtn')?.addEventListener('click', togglePause);
-document.getElementById('desktopRestartBtn')?.addEventListener('click', restartGame);
-document.getElementById('desktopPauseBtn')?.addEventListener('click', togglePause);
 
-// 信息面板方向键
-document.querySelectorAll('.ctrl-btn, .mobile-btn-side').forEach(btn => {
+// 信息面板方向键（桌面端和移动端共用）
+document.querySelectorAll('.ctrl-btn').forEach(btn => {
     const action = btn.dataset.action;
     const map = { left: moveLeft, right: moveRight, down: moveDown, rotate, drop: hardDrop };
     if (map[action]) btn.addEventListener('click', map[action]);
@@ -348,7 +332,7 @@ document.querySelectorAll('.ctrl-btn, .mobile-btn-side').forEach(btn => {
 
 // 防止移动端滚动
 document.addEventListener('touchmove', (e) => {
-    if (e.target.closest('.mobile-btn, .mobile-btn-side')) e.preventDefault();
+    if (e.target.closest('.ctrl-btn')) e.preventDefault();
 }, { passive: false });
 
 // ===== 启动 =====
