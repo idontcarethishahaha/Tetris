@@ -262,6 +262,23 @@ body {
     bottom: 90px;
 }
 
+/* 移动端信息面板中的控制按钮样式 */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .mobile-controls .mobile-btn {
+        width: 100% !important;
+        aspect-ratio: 1 !important;
+        height: auto !important;
+        font-size: 16px;
+        padding: 0;
+    }
+}
+
 /* ===== 游戏结束弹窗 ===== */
 .game-over {
     position: fixed;
@@ -454,5 +471,19 @@ body {
     #tetris {
         width: 270px;
         height: 540px;
+    }
+}
+
+/* 桌面端显示移动端控件 */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+/* 移动端显示移动端控件 */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
     }
 }
