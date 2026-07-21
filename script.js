@@ -323,8 +323,8 @@ document.addEventListener('keydown', (e) => {
 document.getElementById('restartBtn')?.addEventListener('click', restartGame);
 document.getElementById('pauseBtn')?.addEventListener('click', togglePause);
 
-// 信息面板方向键（桌面端和移动端共用）
-document.querySelectorAll('.ctrl-btn').forEach(btn => {
+// 方向键事件绑定（桌面端 ctrl-btn + 移动端 mobile-ctrl-btn）
+document.querySelectorAll('.ctrl-btn, .mobile-ctrl-btn').forEach(btn => {
     const action = btn.dataset.action;
     const map = { left: moveLeft, right: moveRight, down: moveDown, rotate, drop: hardDrop };
     if (map[action]) btn.addEventListener('click', map[action]);
@@ -332,7 +332,7 @@ document.querySelectorAll('.ctrl-btn').forEach(btn => {
 
 // 防止移动端滚动
 document.addEventListener('touchmove', (e) => {
-    if (e.target.closest('.ctrl-btn')) e.preventDefault();
+    if (e.target.closest('.ctrl-btn, .mobile-ctrl-btn')) e.preventDefault();
 }, { passive: false });
 
 // ===== 启动 =====
