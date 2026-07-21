@@ -340,7 +340,7 @@ document.getElementById('desktopRestartBtn')?.addEventListener('click', restartG
 document.getElementById('desktopPauseBtn')?.addEventListener('click', togglePause);
 
 // 信息面板方向键
-document.querySelectorAll('.ctrl-btn').forEach(btn => {
+document.querySelectorAll('.ctrl-btn, .mobile-btn-side').forEach(btn => {
     const action = btn.dataset.action;
     const map = { left: moveLeft, right: moveRight, down: moveDown, rotate, drop: hardDrop };
     if (map[action]) btn.addEventListener('click', map[action]);
@@ -348,7 +348,7 @@ document.querySelectorAll('.ctrl-btn').forEach(btn => {
 
 // 防止移动端滚动
 document.addEventListener('touchmove', (e) => {
-    if (e.target.closest('.mobile-btn')) e.preventDefault();
+    if (e.target.closest('.mobile-btn, .mobile-btn-side')) e.preventDefault();
 }, { passive: false });
 
 // ===== 启动 =====
